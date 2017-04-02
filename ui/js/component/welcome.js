@@ -13,8 +13,9 @@ const IntroStage = React.createClass({
   render: function() {
     return (
       <section>
-        <h1>Welcome to LBRY</h1>
-        <p>Content will go here...</p>
+        <h1>Welcome!</h1>
+        <p>One sentence of information.</p>
+        <p>Possibly one sentence of acknowledgement/warning.</p>
       </section>
     );
   }
@@ -57,16 +58,17 @@ const SubmitEmailStage = React.createClass({
   render: function() {
     return (
       <section>
-        <h1>Verify Your Email Address</h1>
+        <h1>Welcome!</h1>
         {this.state.message
           ? <Notice isError={!this.state.success}>
               {this.state.message}
             </Notice>
           : null}
-        <p>Copy here explaining what we do with your email, and the reward.</p>
+        <p>This is an Early Access release of LBRY.</p>
+        <p>Please enter your email address to continue.</p>
         <form onSubmit={this.handleSubmit}>
-          <section><label>Email <FormField ref={(field) => { this._emailField = field }} type="text" name="email" value={this.state.email} onChange={this.handleEmailChanged} /></label></section>
-          <div><Link button="primary" label="Submit email" disabled={this.state.submitting} onClick={this.handleSubmit} /></div>
+          <section><FormField placeholder="coolguy@coolguy.com" ref={(field) => { this._emailField = field }} type="text" name="email" value={this.state.email} onChange={this.handleEmailChanged} /></section>
+          <div><Link button="primary" label="Next" disabled={this.state.submitting} onClick={this.handleSubmit} /></div>
         </form>
       </section>
     );
@@ -125,7 +127,7 @@ const FinalMessageStage = React.createClass({
 
 export const Welcome = React.createClass({
   _stages: [
-    IntroStage,
+    //IntroStage,
     SubmitEmailStage,
     //ConfirmEmailStage,
     FinalMessageStage,
@@ -161,7 +163,7 @@ export const Welcome = React.createClass({
     const Content = this._stages[this.state.stageNum];
     const isLastStage = this.state.stageNum >= this._stages.length - 1;
     return (
-      <ModalPage contentLabel="Welcome to LBRY" {...this.props}>
+      <ModalPage contentLabel="Welcome." {...this.props}>
         <Content onCompleted={this.handleStageComplete} />
         <section>
           {!isLastStage

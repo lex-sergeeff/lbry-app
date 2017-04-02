@@ -84,7 +84,6 @@ var ReferralPage = React.createClass({
     });
   },
   handleFinished: function() {
-    localStorage.setItem('claimCodeDone', true);
     window.location = '?home';
   },
   render: function() {

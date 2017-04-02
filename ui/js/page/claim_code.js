@@ -88,7 +88,6 @@ var ClaimCodePage = React.createClass({
     });
   },
   handleFinished: function() {
-    localStorage.setItem('claimCodeDone', true);
     window.location = '?home';
   },
   closeModal: function() {

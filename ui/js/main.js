@@ -28,20 +28,7 @@ let init = function() {
     ReactDOM.render(
       (
         <SplashScreen message="Connecting" onLoadDone={function() {
-          // There are a couple of conditions where we want to preempt loading the app and send the user to a
-          // different page. TODO: Find a better place for this logic.
-
-          if (!localStorage.getItem('claimCodeDone') && ['', '?', 'discover'].includes(window.location.search)) {
-            lbry.getBalance((balance) => {
-              if (balance <= 0) {
-                window.location.href = '?claim';
-              } else {
-                ReactDOM.render(<App/>, canvas);
-              }
-            });
-          } else {
             ReactDOM.render(<App/>, canvas);
-          }
         }}/>
       ), canvas);
   }
